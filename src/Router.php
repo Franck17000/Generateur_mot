@@ -29,12 +29,8 @@ class Router {
 // ici vérifier que $type et $url match (pas derreur, ou qu'il y a bien du contenu)
         if (isset($type, $url)){
             echo 'la base n\'est pas vide'; 
-            var_dump($_);
+            $content = ''; // ici rappatrier le controleur et sa vue
+            return $content;
         } echo 'la base est vide';
-            var_dump($_SERVER);
-
-        $content = ''; // ici rappatrier le controleur et sa vue
-
-        return $content;
     }
 }
