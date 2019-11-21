@@ -1,10 +1,27 @@
-<html>
-<div class="">
-<form action="generer.php" method="post">
- <p>Votre nom : <input type="text" name="nom" /></p>
- <p>Votre âge : <input type="text" name="age" /></p>
- <p><input type="submit" value="OK"></p>
-</form>
-</div>
-</html>
+<?php
+$pdo = new PDO("sqlite:src/data.db", null, null, [
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+]);
 
+$sql = "SELECT expression FROM Locution WHERE positionnement = '1' ORDER BY Random() LIMIT 1";
+
+$statement = $pdo->prepare($sql);
+$statement->execute();
+$products = $statement->fetchObject();
+
+foreach ($products as $product){
+    echo $product;
+}
+
+$sql = "SELECT expression FROM Locution ORDER BY Random() LIMIT 1";
+
+$statement = $pdo->prepare($sql);
+$statement->execute();
+$products = $statement->fetchObject();
+
+foreach ($products as $product){
+    echo $product;
+}
+
+?>
